@@ -6,7 +6,7 @@ import cohere
 app = Flask(__name__)
 translator = Translator()
 
-api_key = "NWAA0EelG8ZZOYr4XePYJ6l86WUewGZU9UzuxcRd"
+api_key = "pwpKfUfI8DpyyAHy0JRuI1uhLv3iFfeE7UwFN9q1"
 co = cohere.Client(api_key)
 
 
