@@ -1,12 +1,17 @@
+import cohere
+import os
 import textwrap
+
+from dotenv import load_dotenv
 from flask import Flask, request
 from googletrans import Translator
-import cohere
+
+load_dotenv()
 
 app = Flask(__name__)
 translator = Translator()
 
-api_key = "pwpKfUfI8DpyyAHy0JRuI1uhLv3iFfeE7UwFN9q1"
+api_key = os.getenv("API_KEY")
 co = cohere.Client(api_key)
 
 
@@ -23,10 +28,10 @@ def get_summary(received_data):
 
     #parameters to change outcome of summary
     prediction = co.generate(
-        max_tokens = 50,
-        model = 'large', #model size
+        max_tokens = 100,
+        model = os.getenv("MODEL"), #model size
         prompt = prompt, #the prompt
-        stop_sequences=[". ", ".\n"], # Good enough for end of sentence and paragraph
+        stop_sequences = [". ", ".\n"], # Good enough for end of sentence and paragraph
         temperature = 0.1, #number to determine likelihood of random responses
         k = 100, #ensures top k of number of tokens to generate
         p = 1, #p ensures that only the most likely tokens, with total probability mass of p, are considered for generation at each step
@@ -40,7 +45,7 @@ def get_summary(received_data):
 
 @app.route("/")
 def index():
-    return "heAR_"
+    return "heAR"
 
 
 @app.route('/summary')
