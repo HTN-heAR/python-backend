@@ -43,11 +43,11 @@ def index():
     return "heAR_"
 
 
-# @app.route('/login', methods=['GET'])
 @app.route('/summary')
 def summary():
     res = request.args.get("q")
     return get_summary(res)
+
 
 @app.route('/translate')
 def translate():
