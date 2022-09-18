@@ -33,8 +33,8 @@ def get_summary(received_data):
         prompt = prompt, #the prompt
         stop_sequences = [". ", ".\n"], # Good enough for end of sentence and paragraph
         temperature = 0.1, #number to determine likelihood of random responses
-        k = 100, #ensures top k of number of tokens to generate
-        p = 1, #p ensures that only the most likely tokens, with total probability mass of p, are considered for generation at each step
+        k = 200, #ensures top k of number of tokens to generate
+        p = 0.75, #p ensures that only the most likely tokens, with total probability mass of p, are considered for generation at each step
         frequency_penalty = 0.5, #penalizes new tokens based on their existing frequency in the text so far
         presence_penalty = 0.5, #penalizes new tokens based on whether they appear in the text so far
     )
