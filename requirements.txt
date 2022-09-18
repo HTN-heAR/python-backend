@@ -1,3 +1,4 @@
 flask
 googletrans==3.1.0a0
 cohere
+gunicorn==20.0.4
