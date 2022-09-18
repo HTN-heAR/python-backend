@@ -45,7 +45,7 @@ def get_summary(received_data):
 
 @app.route("/")
 def index():
-    return "heAR_"
+    return "heAR"
 
 
 @app.route('/summary')
