@@ -40,7 +40,7 @@ def get_summary(received_data):
 
 @app.route("/")
 def index():
-    return "heAR"
+    return "heAR_"
 
 
 # @app.route('/login', methods=['GET'])
