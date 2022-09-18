@@ -23,18 +23,19 @@ def get_summary(received_data):
 
     #parameters to change outcome of summary
     prediction = co.generate(
-        model='large', #model size
-        prompt=prompt, #the prompt
+        max_tokens = 50,
+        model = 'large', #model size
+        prompt = prompt, #the prompt
+        stop_sequences=[". ", ".\n"], # Good enough for end of sentence and paragraph
         temperature = 0.1, #number to determine likelihood of random responses
-        k = 500, #ensures top k of number of tokens to generate
-        p = 1, #t ensures that only the most likely tokens, with total probability mass of p, are considered for generation at each step
-        frequency_penalty= 0.5, #penalizes new tokens based on their existing frequency in the text so far
-        presence_penalty= 0.5, #penalizes new tokens based on whether they appear in the text so far
+        k = 100, #ensures top k of number of tokens to generate
+        p = 1, #p ensures that only the most likely tokens, with total probability mass of p, are considered for generation at each step
+        frequency_penalty = 0.5, #penalizes new tokens based on their existing frequency in the text so far
+        presence_penalty = 0.5, #penalizes new tokens based on whether they appear in the text so far
     )
 
-    print(prediction)
-
-    return "tba"
+    print(prediction.generations[0])
+    return prediction.generations[0].text
 
 
 @app.route("/")
@@ -55,10 +56,3 @@ def translate():
 
 if __name__ == "__main__":
     app.run()
-
-"""
-send: raw transcription
-
-return: summary
-return: translation
-"""
