@@ -59,5 +59,6 @@ def translate():
     res = request.args.get("q")
     return get_translation(res)
 
+
 if __name__ == "__main__":
     app.run()
